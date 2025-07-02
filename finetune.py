@@ -9,7 +9,7 @@ model_name = "bert-base-uncased"
 
 # 1. Dataset Preparation
 # 1.1 Loading Dataset
-data_files = {"train": "datasets/dataset_train_v2.csv", "test": "datasets/dataset_val_v2.csv"}
+data_files = {"train": "datasets/dataset_train.csv", "test": "datasets/dataset_val.csv"}
 dataset = load_dataset("csv", data_files=data_files)
 # print(dataset["train"][0])
 # Output:
@@ -17,7 +17,7 @@ dataset = load_dataset("csv", data_files=data_files)
     #     features: ['question', 'ES Index', 'label'],
     #     num_rows: 3666
     # })
-    # {'question': 'What is the Zone name for the city Anantapur?', 'ES Index': 'jiobeacon_cell_wise', 'label': 0}
+    # {'question': 'What is the movie name which stars Brad Pitt as a racer?', 'ES Index': 'test_index', 'label': 0}
 
 # 1.2 Dataset Tokenization
 tokenizer = AutoTokenizer.from_pretrained(model_name)
@@ -32,7 +32,7 @@ tokenized_dataset = dataset.map(tokenize_function, batched=True)
     #     features: ['question', 'ES Index', 'label', 'input_ids', 'token_type_ids', 'attention_mask'],
     #     num_rows: 3666
     # })
-    # {'question': 'What is the Zone name for the city Anantapur?', 'ES Index': 'jiobeacon_cell_wise', 'label': 0, 'input_ids': [101, 2054, 2003, 1996, 4224, 2171, 2005, 1996, 2103, 9617, 12380, 5311, 1029, 102, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 'token_type_ids': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 'attention_mask': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}
+    # {'question': 'What is the movie name which stars Brad Pitt as a racer', 'ES Index': 'test_index', 'label': 0, 'input_ids': [101, 2054, 2003, 1996, 4224, 2171, 2005, 1996, 2103, 9617, 12380, 5311, 1029, 102, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 'token_type_ids': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 'attention_mask': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}
 
 
 
@@ -65,7 +65,7 @@ model = AutoModelForSequenceClassification.from_pretrained(model_name, num_label
 # 3. Training Pipeline
 # 3.1 Training Arguments
 training_args = TrainingArguments(
-    output_dir="./nwa_table_classifier_v2",          # Directory for saving model checkpoints
+    output_dir="./topic_classifier",          # Directory for saving model checkpoints
     eval_strategy="epoch",           # Evaluate at the end of each epoch
     save_strategy="epoch",           # Save model at the end of each epoch
     learning_rate=5e-5,              # Start with a small learning rate

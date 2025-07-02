@@ -14,14 +14,14 @@ We fine-tune a pre-trained BERT model to classify natural language questions int
 
 The dataset consists of two CSV files:
 
-* `dataset_train_v2.csv` (Train set)
-* `dataset_val_v2.csv` (Validation/Test set)
+* `dataset_train.csv` (Train set)
+* `dataset_val.csv` (Validation/Test set)
 
 Each CSV should contain the following columns:
 
-| question                  | ES Index              | label |
-| ------------------------- | --------------------- | ----- |
-| What is the Zone name...? | jiobeacon\_cell\_wise | 0     |
+| question                   | ES Index    | label |
+|----------------------------|-------------| ----- |
+| What is the movie name...? | test\_index | 0     |
 
 > `label` is a categorical integer from 0 to 7.
 
@@ -69,8 +69,8 @@ python finetune.py
 
 Make sure the following files are present:
 
-* `datasets/dataset_train_v2.csv`
-* `datasets/dataset_val_v2.csv`
+* `datasets/dataset_train.csv`
+* `datasets/dataset_val.csv`
 
 ---
 
@@ -101,3 +101,7 @@ To enable GPU + mixed precision (FP16), ensure you have:
 * GPU support in `transformers`
 
 ---
+
+## 💳 Credits
+
+All credits belongs to @heyamit10 for his medium blog post (https://medium.com/@heyamit10/fine-tuning-bert-for-classification-a-practical-guide-b8c1c56f252c)
